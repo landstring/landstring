@@ -20,6 +20,10 @@
 nav{
     margin-top: 100px;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 nav a, nav .dropdown .dropbtn {
     padding: 6px 8px 6px 0px;
     text-decoration: none;
@@ -35,7 +39,7 @@ nav a, nav .dropdown .dropbtn {
   }
   
   /* При наведении курсора мыши */
-  nav a:hover, nav .dropdown .dropbtn:hover {
+  nav a:hover, .dropdown:hover {
     color: #3399FF;
     background-color: white;
   }
@@ -59,7 +63,6 @@ nav a, nav .dropdown .dropbtn {
 
   }
   .dropdown:hover .dropdown-container {display: block;}
-  .dropdown:hover .dropbtn{background-color: white; color: #3399FF;}
 .user{
     margin-top: 100px;
 }

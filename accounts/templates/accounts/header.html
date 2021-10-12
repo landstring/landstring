@@ -1,23 +1,47 @@
 {% load static %}
 <div class="sidenav">
-  <div class="logo">
-      Landstring
-  </div>
-  <nav>
-  <a href="#about">О Нас</a>
-  <a href="#services">Услуги</a>
-  <a href="#clients">Клинты</a>
-  <a href="#contact">Контакт</a>
-  <button class="dropdown-btn">Выпадающий
-  </button>
-  <div class="dropdown-container">
-      <a href="#">Ссылка 1</a>
-      <a href="#">Ссылка 2</a>
-      <a href="#">Ссылка 3</a>
-  </div>
-  <a href="#contact">Поиск</a>
-  </nav>
-  <div class="user">
-      <a href="#"><img src="{% static 'accounts/img/user.png' %}" alt="Не удалось загрузить картинку"></a>
-  </div>
+    <div class="logo">
+        Landstring
+    </div>
+    <nav>
+        <a href="#about">О нас</a>
+        <div class="dropdown">
+            <div class="dropbtn">Стартапы</div>
+
+            <div class="dropdown-container">
+                <a href="#">Все идеи</a>
+                <a href="#">Мои идеи</a>
+                <a href="#">Создать идею</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <div class="dropbtn">Проекты</div>
+
+            <div class="dropdown-container">
+                <a href="#">Текущие проекты</a>
+                <a href="#">Создать проект</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <div class="dropbtn">Команды</div>
+
+            <div class="dropdown-container">
+                <a href="#">Мои команды</a>
+                <a href="#">Создать команду</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <div class="dropbtn">Статьи</div>
+
+            <div class="dropdown-container">
+                <a href="#">Все статьи</a>
+                <a href="#">Мои статьи</a>
+                <a href="#">Написать статью</a>
+            </div>
+        </div>
+        <a href="#contact">Обучение</a>
+    </nav>
+    <div class="user">
+        <a href="#"><img src="{% static 'accounts/img/user.png' %}" alt="Не удалось загрузить картинку"></a>
+    </div>
 </div>
