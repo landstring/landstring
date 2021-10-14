@@ -53,3 +53,68 @@ def logoutUser(request):
 def home(request):
     context = {}
     return render(request, 'accounts/home.html', context)
+
+@login_required(login_url='login')
+def startups(request):
+    context = {}
+    return render(request, 'accounts/startups.html', context)
+
+@login_required(login_url='login')
+def my_startups(request):
+    context = {}
+    return render(request, 'accounts/my_startups.html', context)
+
+@login_required(login_url='login')
+def new_startup(request):
+    context = {}
+    return render(request, 'accounts/new_startup.html', context)
+
+@login_required(login_url='login')
+def projects(request):
+    context = {}
+    return render(request, 'accounts/projects.html', context)
+
+@login_required(login_url='login')
+def new_project(request):
+    context = {}
+    return render(request, 'accounts/new_project.html', context)
+
+@login_required(login_url='login')
+def teams(request):
+    context = {}
+    return render(request, 'accounts/teams.html', context)
+
+@login_required(login_url='login')
+def my_teams(request):
+    context = {}
+    return render(request, 'accounts/my_teams.html', context)
+
+@login_required(login_url='login')
+def new_team(request):
+    context = {}
+    return render(request, 'accounts/new_team.html', context)
+
+@login_required(login_url='login')
+def articles(request):
+    context = {}
+    return render(request, 'accounts/articles.html', context)
+
+@login_required(login_url='login')
+def my_articles(request):
+    context = {}
+    return render(request, 'accounts/my_articles.html', context)
+
+@login_required(login_url='login')
+def new_articles(request):
+    context = {}
+    return render(request, 'accounts/new_articles.html', context)
+
+@login_required(login_url='login')
+def learning(request):
+    context = {}
+    return render(request, 'accounts/learning.html', context)
+
+@login_required(login_url='login')
+def account(request):
+    context = {}
+    return render(request, 'accounts/account.html', context)
