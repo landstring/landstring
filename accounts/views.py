@@ -3,11 +3,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
+
 from .forms import CreateUserForm
+
+
 
 def registerPage(request):
 	if request.user.is_authenticated:
-		return redirect('accounts:home')
+		return redirect('home')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
@@ -17,14 +21,15 @@ def registerPage(request):
 			    user = form.cleaned_data.get('username')
 			    messages.success(request, 'Account was created for ' + user)
 
-			    return redirect('accounts:login')
+			    return redirect('login')
+			
 
-		context = { 'form': form }
+		context = {'form':form}
 		return render(request, 'accounts/register.html', context)
 
 def loginPage(request):
     if request.user.is_authenticated:
-	    return redirect('accounts:home')
+	    return redirect('home')
     else:
         if request.method == 'POST':
             print(request.POST)
@@ -42,9 +47,9 @@ def loginPage(request):
 
 def logoutUser(request):
 	logout(request)
-	return redirect('accounts:login')
+	return redirect('login')
 
-@login_required(login_url='accounts:login')
+@login_required(login_url='login')
 def home(request):
     context = {}
     return render(request, 'accounts/home.html', context)
