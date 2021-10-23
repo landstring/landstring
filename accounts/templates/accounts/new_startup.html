@@ -1,7 +1,23 @@
 {% extends "accounts/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'accounts/css/new_idea.css' %}">
+{% endblock styles %}
+
 
 {% block content %}
 <div class="main">
-    <h1>Создать стартап</h1>
+    <div class="container">
+        <div class="idea">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="name_idea"><h3>Название идеи: </h3> {{ form.name }}</div>
+                <div class="description_idea"><h3>Описание идеи: </h3> {{ form.description }}</div>
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+
+        </div>
+    </div>
 </div>
 {% endblock content %}

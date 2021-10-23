@@ -13,7 +13,9 @@ urlpatterns = [
 
     path('startups/', views.startups, name="startups"),
     path('my_startups/', views.my_startups, name="my_startups"),
+    path('my_startups/<int:id>/', views.startupView),
     path('new_startup/', views.new_startup, name="new_startup"),
+    path('startups/<int:id>/', views.startupView),
 
     path('projects/', views.projects, name="projects"),
     path('new_project/', views.new_project, name="new_project"),

@@ -1,0 +1,86 @@
+.container{
+    margin-left: 100px;
+    margin-top: 80px;
+}
+.idea{
+    width: 1000px;
+    padding: 30px 100px;
+    border-radius: 6px;
+    background-color: rgb(51, 153, 255, 0.1);
+    box-shadow: 0 0 3px rgb(0 0 0 / 10%);
+}
+.name_idea, .description_idea h3{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color: #555;
+}
+.name_idea{
+    display: inline-flex;
+}
+.name_idea h3{
+    display: block;
+}
+#id_name{
+    margin-top: 34px;
+    margin-left: 30px;
+    display: block;
+    height: 30px;
+    border-radius: 6px;
+    border-style: solid;
+    border-color: white;
+    resize: none;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    width: 500px;
+    box-shadow: 0 0 3px rgb(0 0 0 / 10%);
+    font-size: 20px;
+    width: 710px;
+}
+
+
+#id_description{
+    font-size: 15px;
+    color: #555;
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgb(0 0 0 / 10%);
+    resize: none;
+    outline:none;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+#id_description:hover{
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgb(0 0 0 / 10%);
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn:hover{
+    cursor: pointer;
+}
+
+
+/* font-size: 20px; - размер вводимого текста   */

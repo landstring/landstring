@@ -1,0 +1,49 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'accounts/css/idea.css' %}">
+
+{% endblock styles %}
+
+
+{% block content %}
+<div class="main">
+    <div class="container">
+        <div class="idea">
+            <h3 class="idea_title">{{ idea.name }}</h3>
+            <hr />
+            <p class="idea_description">{{ idea.description }}</p>
+            <hr />
+            <div class="creator">
+                <h3 class="text">Создатель: </h3>
+                <h3 class="name">{{ idea.creator.first_name}} {{ idea.creator.last_name }}</h3>
+            </div>
+
+        </div>
+        <div class="comments">
+            <h3 class="comments_title">Комментарии</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="new_comment">
+                    {{ form.comment }}
+                    <button type="submit" class="btn">Отправить</button>
+                </div>
+
+            </form>
+            <div class="list_comments">
+                {% for comment in comments %}
+                <div class="comment_block">
+                    <div class="author_comment">{{ comment.author.first_name }} {{ comment.author.last_name }}</div>
+
+
+                    <div class="text_comment">{{ comment.comment }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock content %}
