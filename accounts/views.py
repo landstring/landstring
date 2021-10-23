@@ -3,10 +3,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import Comments, Ideas
 
 
-from .forms import CreateUserForm, CommentForm, CreateIdeaForm
+from .forms import CreateUserForm
 
 
 
@@ -33,6 +32,7 @@ def loginPage(request):
 	    return redirect('home')
     else:
         if request.method == 'POST':
+            print(request.POST)
             username = request.POST.get('username')
             password = request.POST.get('password')
     
@@ -53,94 +53,3 @@ def logoutUser(request):
 def home(request):
     context = {}
     return render(request, 'accounts/home.html', context)
-
-@login_required(login_url='login')
-def startups(request):
-    ideas = Ideas.objects.all().order_by('-id')
-    context = {'ideas': ideas}
-    return render(request, 'accounts/startups.html', context)
-
-@login_required(login_url='login')
-def startupView(request, id):
-    idea = Ideas.objects.get(id = id)
-    comments = Comments.objects.filter(idea = idea).order_by('-id')
-
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        text = form.data.get('comment')
-        comment = Comments(comment=text, author = request.user, idea = idea)
-        comment.save()
-    form = CommentForm(None)
-    return render(request, 'ideas/idea_detail.html', {'idea' : idea, 'comments' : comments, 'form' : form}) 
-
-
-@login_required(login_url='login')
-def my_startups(request):
-    ideas = Ideas.objects.filter(creator=request.user.id).order_by('-id')
-    context = {'ideas': ideas}
-    return render(request, 'accounts/startups.html', context)
-
-@login_required(login_url='login')
-def new_startup(request):
-    if request.method == 'POST':
-        form = CreateIdeaForm(request.POST)
-        name = form.data.get('name')
-        description = form.data.get('description')
-        idea = Ideas(name=name, description = description, creator=request.user)
-        idea.save()
-        return redirect('startups')
-    else:
-        form = CreateIdeaForm(None)
-        context = {'form' : form}
-        return render(request, 'accounts/new_startup.html', context)
-
-@login_required(login_url='login')
-def projects(request):
-    context = {}
-    return render(request, 'accounts/projects.html', context)
-
-@login_required(login_url='login')
-def new_project(request):
-    context = {}
-    return render(request, 'accounts/new_project.html', context)
-
-@login_required(login_url='login')
-def teams(request):
-    context = {}
-    return render(request, 'accounts/teams.html', context)
-
-@login_required(login_url='login')
-def my_teams(request):
-    context = {}
-    return render(request, 'accounts/my_teams.html', context)
-
-@login_required(login_url='login')
-def new_team(request):
-    context = {}
-    return render(request, 'accounts/new_team.html', context)
-
-@login_required(login_url='login')
-def articles(request):
-    context = {}
-    return render(request, 'accounts/articles.html', context)
-
-@login_required(login_url='login')
-def my_articles(request):
-    context = {}
-    return render(request, 'accounts/my_articles.html', context)
-
-@login_required(login_url='login')
-def new_articles(request):
-    context = {}
-    return render(request, 'accounts/new_articles.html', context)
-
-@login_required(login_url='login')
-def learning(request):
-    context = {}
-    return render(request, 'accounts/learning.html', context)
-
-@login_required(login_url='login')
-def account(request):
-    context = {}
-    return render(request, 'accounts/account.html', context)
-

@@ -11,22 +11,15 @@
     overflow-x: hidden;
     padding-top: 20px;
   }
-
 .logo{
-  margin-top: 50px;
+    margin-top: 20px;
+    font-family: 'Poiret One', cursive;
+    color: white;
+    font-size: 40px;
 }
-.logo a{
-  text-decoration: none;
-
-  font-family: 'Poiret One', cursive;
-  color: white;
-  font-size: 40px;
-}
-
 nav{
     margin-top: 100px;
 }
-
 nav a, nav .dropdown .dropbtn {
     padding: 6px 8px 6px 0px;
     text-decoration: none;
@@ -66,12 +59,9 @@ nav a, nav .dropdown .dropbtn {
 
   }
   .dropdown:hover .dropdown-container {display: block;}
-  .dropdown:hover .dropbtn{background-color: white; color: #3399FF; cursor: default}
+  .dropdown:hover .dropbtn{background-color: white; color: #3399FF;}
 .user{
-    position: fixed;
-    left: 87px;
-    bottom: 80px;
-
+    margin-top: 100px;
 }
 .user a:hover{
     background-color: none;
