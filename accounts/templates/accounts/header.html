@@ -1,47 +1,47 @@
 {% load static %}
 <div class="sidenav">
     <div class="logo">
-        Landstring
+        <a href="{% url 'home' %}">Landstring</a>
     </div>
     <nav>
-        <a href="#about">О нас</a>
         <div class="dropdown">
             <div class="dropbtn">Стартапы</div>
 
             <div class="dropdown-container">
-                <a href="#">Все идеи</a>
-                <a href="#">Мои идеи</a>
-                <a href="#">Создать идею</a>
+                <a href="{% url 'startups' %}">Все идеи</a>
+                <a href="{% url 'my_startups' %}">Мои идеи</a>
+                <a href="{% url 'new_startup' %}">Создать идею</a>
             </div>
         </div>
         <div class="dropdown">
             <div class="dropbtn">Проекты</div>
 
             <div class="dropdown-container">
-                <a href="#">Текущие проекты</a>
-                <a href="#">Создать проект</a>
+                <a href="{% url 'projects' %}">Текущие проекты</a>
+                <a href="{% url 'new_project' %}">Создать проект</a>
             </div>
         </div>
         <div class="dropdown">
             <div class="dropbtn">Команды</div>
 
             <div class="dropdown-container">
-                <a href="#">Мои команды</a>
-                <a href="#">Создать команду</a>
+                <a href="{% url 'teams' %}">Все команды</a>
+                <a href="{% url 'my_teams' %}">Мои команды</a>
+                <a href="{% url 'new_team' %}">Создать команду</a>
             </div>
         </div>
         <div class="dropdown">
             <div class="dropbtn">Статьи</div>
 
             <div class="dropdown-container">
-                <a href="#">Все статьи</a>
-                <a href="#">Мои статьи</a>
-                <a href="#">Написать статью</a>
+                <a href="{% url 'articles' %}">Все статьи</a>
+                <a href="{% url 'my_articles' %}">Мои статьи</a>
+                <a href="{% url 'new_articles' %}">Написать статью</a>
             </div>
         </div>
-        <a href="#contact">Обучение</a>
+        <a href="{% url 'learning' %}">Обучение</a>
     </nav>
     <div class="user">
-        <a href="#"><img src="{% static 'accounts/img/user.png' %}" alt="Не удалось загрузить картинку"></a>
+        <a href="{% url 'account' %}"><img src="{% static 'accounts/img/user.png' %}" alt="Не удалось загрузить картинку"></a>
     </div>
 </div>
