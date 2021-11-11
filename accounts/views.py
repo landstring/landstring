@@ -4,12 +4,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import Comments, Ideas
-
+from .models import PersonalProject, Stage_of_PersonalProject, Task_of_PersonalProject
 
 from .forms import CreateUserForm, CommentForm, CreateIdeaForm
 
-
-
+# АВТОРИЗАЦИЯ и РЕГИСТРАЦИЯ 
 def registerPage(request):
 	if request.user.is_authenticated:
 		return redirect('home')
@@ -49,11 +48,12 @@ def logoutUser(request):
 	logout(request)
 	return redirect('login')
 
+#ДОМАШНАЯ СТРАНИЦА
 @login_required(login_url='login')
 def home(request):
     context = {}
     return render(request, 'accounts/home.html', context)
-
+#СТАРТАПЫ
 @login_required(login_url='login')
 def startups(request):
     ideas = Ideas.objects.all().order_by('-id')
@@ -93,11 +93,18 @@ def new_startup(request):
         form = CreateIdeaForm(None)
         context = {'form' : form}
         return render(request, 'accounts/new_startup.html', context)
-
+#ПРОЕКТЫ
 @login_required(login_url='login')
 def projects(request):
-    context = {}
+    personal_projects = PersonalProject.objects.filter(author = request.user.id).filter(completed = False).order_by('-id')
+    finished_personal_projects =  PersonalProject.objects.filter(author = request.user.id).filter(completed = True).order_by('-id')
+    context = {'p_p': personal_projects, 'f_p_p':  finished_personal_projects}
     return render(request, 'accounts/projects.html', context)
+
+@login_required(login_url='login')
+def team_projects(request):
+    context = {}
+    return render(request, 'accounts/team_projects.html', context)
 
 @login_required(login_url='login')
 def new_project(request):
