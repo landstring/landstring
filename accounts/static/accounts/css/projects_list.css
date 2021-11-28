@@ -2,10 +2,10 @@
     margin-left: 100px;
     margin-top: 80px;
 }
-.projects_list h2{
+.projects_list h3{
     color: rgb(51, 153, 255);
 }
-.projects_list h2.finished{
+.projects_list h3.finished{
     margin-top: 150px;
     color: rgb(51, 153, 255);
 }
@@ -17,25 +17,15 @@
     background-color: rgb(51, 153, 255, 0.1);
     box-shadow: 0 0 3px rgb(0 0 0 / 10%);
 }
-.project_title{
+h3.project_title{
     color: #555;
 }
 
-.creator{
-    display: inline;
-}
+
 a.project_title{
     text-decoration: none;
 }
-.creator h3.text{
-    color: rgb(51, 153, 255);
-    display: inline;
-}
 
-.creator h3.name{
-    color: #555;
-    display: inline;
-}
 p.length_0 {
     margin-left: 50px;
     font-size: 20px;

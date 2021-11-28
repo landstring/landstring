@@ -1,0 +1,43 @@
+{% extends "accounts/main/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'accounts/css/projects_list.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<div class="main">
+
+    <div class="projects_list">
+        <h3>Текущие проекты</h3>
+        {% if p_p %}
+            {% for project in p_p %}
+            <div class="project">
+                <a href="{{ project.id }}" class="project_title">
+                    <h3 class="project_title">{{ project.name }}</h3>
+                </a>
+            </div>
+            {% endfor %}
+        {% else %}
+                <p class="length_0">Текущих проектов нет.</p>
+        {% endif %}
+    </div>
+
+
+    <div class="projects_list">
+        <h3>Завершённые проекты</h3>
+        {% if f_p_p %}
+            {% for project in f_p_p %}
+            <div class="project">
+                <a href="{{ project.id }}" class="project_title">
+                    <h3 class="project_title">{{ project.name }}</h3>
+                </a>
+            </div>
+            {% endfor %}
+        {% else %}
+                <p class="length_0">Завершённых проектов нет.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

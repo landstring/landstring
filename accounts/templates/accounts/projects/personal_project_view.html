@@ -1,0 +1,51 @@
+{% extends "accounts/main/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'accounts/css/project.css' %}">
+
+{% endblock styles %}
+
+
+{% block content %}
+<div class="main">
+    <div class="container">
+        <div class="project">
+            <h3 class="project_title">{{ project.name }}</h3>
+            <hr />
+            <p class="project_description">{{ project.description }}</p>
+        </div>
+        <div class="new_stage">
+            <a href="create-stage" class="button">Создать этап</a>
+        </div>   
+    </div>
+    <div class="margin-110"></div>
+    {% for stage in stages %}
+    <div class="container">
+        <div class="stage">
+            <h3 class="stage_title">{{ stage.name }}</h3>
+            <hr />
+            <p class="stage_description">{{ stage.description }}</p>
+            <hr />
+            <ol>
+            {% for task_list in tasks %}
+                {% for task in task_list %}
+                {% if task.stage.name == stage.name %}
+                    {% if task.completed %}
+                        <li class="task"><a class="task completed" href="#">{{ task.name }}</a></li>
+                    {% else %}
+                        <li class="task"><a class="task" href="#">{{ task.name }}</a></li>
+                    {% endif %}  
+                {% endif %}
+                {% endfor %}
+            {% endfor %} 
+            </ol>
+            <div class="new_task">
+                <a href="create-task" class="grey-button">Создать задание</a>
+            </div>
+        </div> 
+    </div>
+    {% endfor %}
+    
+</div>
+{% endblock content %}

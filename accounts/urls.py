@@ -18,11 +18,12 @@ urlpatterns = [
     path('startups/<int:id>/', views.startupView),
 
     path('projects/', views.projects, name="projects"),
+    path('projects/<int:id>/', views.projectView),
     path('team-projects/', views.team_projects, name="team_projects"),
     path('new_project/', views.new_project, name="new_project"),
 
     path('teams/', views.teams, name="teams"),
-    path('my_teams/', views.my_teams, name="my_teams"),
+    path('my_team/', views.my_team, name="my_team"),
     path('new_team/', views.new_team, name="new_team"),
 
     path('articles/', views.articles, name="articles"),

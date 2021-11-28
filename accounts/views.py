@@ -25,7 +25,7 @@ def registerPage(request):
 			
 
 		context = {'form':form}
-		return render(request, 'accounts/register.html', context)
+		return render(request, 'accounts/main/register.html', context)
 
 def loginPage(request):
     if request.user.is_authenticated:
@@ -42,7 +42,7 @@ def loginPage(request):
             else:
                 messages.info(request, 'Неверный логин или пароль')
         context = {}
-        return render(request, 'accounts/login.html', context)
+        return render(request, 'accounts/main/login.html', context)
 
 def logoutUser(request):
 	logout(request)
@@ -52,13 +52,13 @@ def logoutUser(request):
 @login_required(login_url='login')
 def home(request):
     context = {}
-    return render(request, 'accounts/home.html', context)
+    return render(request, 'accounts/main/home.html', context)
 #СТАРТАПЫ
 @login_required(login_url='login')
 def startups(request):
     ideas = Ideas.objects.all().order_by('-id')
     context = {'ideas': ideas}
-    return render(request, 'accounts/startups.html', context)
+    return render(request, 'accounts/startups/startups.html', context)
 
 @login_required(login_url='login')
 def startupView(request, id):
@@ -71,14 +71,14 @@ def startupView(request, id):
         comment = Comments(comment=text, author = request.user, idea = idea)
         comment.save()
     form = CommentForm(None)
-    return render(request, 'ideas/idea_detail.html', {'idea' : idea, 'comments' : comments, 'form' : form}) 
+    return render(request, 'accounts/startups/idea_detail.html', {'idea' : idea, 'comments' : comments, 'form' : form}) 
 
 
 @login_required(login_url='login')
 def my_startups(request):
     ideas = Ideas.objects.filter(creator=request.user.id).order_by('-id')
     context = {'ideas': ideas}
-    return render(request, 'accounts/startups.html', context)
+    return render(request, 'accounts/startups/startups.html', context)
 
 @login_required(login_url='login')
 def new_startup(request):
@@ -92,54 +92,67 @@ def new_startup(request):
     else:
         form = CreateIdeaForm(None)
         context = {'form' : form}
-        return render(request, 'accounts/new_startup.html', context)
+        return render(request, 'accounts/startups/new_startup.html', context)
 #ПРОЕКТЫ
 @login_required(login_url='login')
 def projects(request):
     personal_projects = PersonalProject.objects.filter(author = request.user.id).filter(completed = False).order_by('-id')
     finished_personal_projects =  PersonalProject.objects.filter(author = request.user.id).filter(completed = True).order_by('-id')
     context = {'p_p': personal_projects, 'f_p_p':  finished_personal_projects}
-    return render(request, 'accounts/projects.html', context)
+    return render(request, 'accounts/projects/projects.html', context)
+
+@login_required(login_url='login')
+def projectView(request, id):
+    project = PersonalProject.objects.filter(author = request.user.id).filter(id = id)
+    if project:
+        project = PersonalProject.objects.filter(author = request.user.id).get(id = id)
+        stages = Stage_of_PersonalProject.objects.filter(project = id).order_by('-id')
+        tasks = []
+        for stage in stages:
+            tasks.append(Task_of_PersonalProject.objects.filter(stage = stage.id)) 
+        return render(request, 'accounts/projects/personal_project_view.html', {'project' : project, 'stages' : stages, 'tasks' : tasks})
+    else:
+        return render(request, 'accounts/projects/personal_project_view_error.html')
 
 @login_required(login_url='login')
 def team_projects(request):
     context = {}
-    return render(request, 'accounts/team_projects.html', context)
+    return render(request, 'accounts/projects/team_projects.html', context)
 
 @login_required(login_url='login')
 def new_project(request):
     context = {}
-    return render(request, 'accounts/new_project.html', context)
+    return render(request, 'accounts/projects/new_project.html', context)
 
 @login_required(login_url='login')
 def teams(request):
     context = {}
-    return render(request, 'accounts/teams.html', context)
+    return render(request, 'accounts/teams/teams.html', context)
 
 @login_required(login_url='login')
-def my_teams(request):
+def my_team(request):
     context = {}
-    return render(request, 'accounts/my_teams.html', context)
+    return render(request, 'accounts/teams/my_teams.html', context)
 
 @login_required(login_url='login')
 def new_team(request):
     context = {}
-    return render(request, 'accounts/new_team.html', context)
+    return render(request, 'accounts/teams/new_team.html', context)
 
 @login_required(login_url='login')
 def articles(request):
     context = {}
-    return render(request, 'accounts/articles.html', context)
+    return render(request, 'accounts/articles/articles.html', context)
 
 @login_required(login_url='login')
 def my_articles(request):
     context = {}
-    return render(request, 'accounts/my_articles.html', context)
+    return render(request, 'accounts/articles/my_articles.html', context)
 
 @login_required(login_url='login')
 def new_articles(request):
     context = {}
-    return render(request, 'accounts/new_articles.html', context)
+    return render(request, 'accounts/articles/new_article.html', context)
 
 @login_required(login_url='login')
 def learning(request):
@@ -149,5 +162,5 @@ def learning(request):
 @login_required(login_url='login')
 def account(request):
     context = {}
-    return render(request, 'accounts/account.html', context)
+    return render(request, 'accounts/main/account.html', context)
 

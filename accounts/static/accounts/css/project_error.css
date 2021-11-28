@@ -1,0 +1,15 @@
+.container{
+    margin-left: 100px;
+    margin-top: 80px;
+}
+.project{
+    text-align: center;
+    width: 1000px;
+    padding: 30px 100px;
+    border-radius: 6px;
+    background-color: rgb(51, 153, 255, 0.1);
+    box-shadow: 0 0 3px rgb(0 0 0 / 10%);
+}
+.project_title{
+    color: #555;
+}

@@ -67,7 +67,7 @@ class Stage_of_PersonalProject(models.Model):
 
 
 class Task_of_PersonalProject(models.Model):
-    task = models.CharField(verbose_name="Задача", max_length=500)
+    name = models.CharField(verbose_name="Задача", max_length=500)
     stage = models.ForeignKey(
         Stage_of_PersonalProject, 
         on_delete=models.CASCADE,
@@ -75,7 +75,7 @@ class Task_of_PersonalProject(models.Model):
     completed = models.BooleanField(verbose_name="Задача выполнена")
 
     def __str__(self) -> str:
-        return (str(self.stage) + "  --->  " + self.task)
+        return (str(self.stage) + "  --->  " + self.name)
 
     class Meta:
         verbose_name = "задача личного проекта на текущем этапе"

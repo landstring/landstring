@@ -1,0 +1,18 @@
+{% extends "accounts/main/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'accounts/css/project_error.css' %}">
+
+{% endblock styles %}
+
+
+{% block content %}
+<div class="main">
+    <div class="container">
+        <div class="project">
+            <h3 class="project_title">Нет доступа к проекту или проект не существует.</h3>
+        </div>
+    </div>
+</div>
+{% endblock content %}
