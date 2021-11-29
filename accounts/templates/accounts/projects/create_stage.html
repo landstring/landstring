@@ -1,0 +1,23 @@
+{% extends "accounts/main/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'accounts/css/new_stage.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<div class="main">
+    <div class="container">
+        <div class="stage">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="name_stage"><h3>Название этапа: </h3> {{ form.name }}</div>
+                <div class="description_stage"><h3>Описание этапа: </h3> {{ form.description }}</div>
+                <button type="submit" class="btn">Сохранить</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

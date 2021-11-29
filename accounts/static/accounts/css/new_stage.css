@@ -2,14 +2,14 @@
     margin-left: 100px;
     margin-top: 80px;
 }
-.idea{
+.stage{
     width: 1000px;
     padding: 30px 100px;
     border-radius: 6px;
     background-color: rgb(51, 153, 255, 0.1);
     box-shadow: 0 0 3px rgb(0 0 0 / 10%);
 }
-.name_idea, .description_idea h3{
+.name_stage, .description_stage h3{
     display: block;
     font-size: 1.17em;
     margin-block-start: 1em;
@@ -19,10 +19,10 @@
     font-weight: bold;
     color: #555;
 }
-.name_idea{
+.name_stage{
     display: inline-flex;
 }
-.name_idea h3{
+.name_stage h3{
     display: block;
 }
 #id_name{

@@ -1,0 +1,22 @@
+{% extends "accounts/main/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'accounts/css/new_task.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<div class="main">
+    <div class="container">
+        <div class="task">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="name_task"><h3>Задание: </h3> {{ form.name }}</div>
+                <button type="submit" class="btn">Сохранить</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

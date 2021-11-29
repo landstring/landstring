@@ -19,8 +19,11 @@ urlpatterns = [
 
     path('projects/', views.projects, name="projects"),
     path('projects/<int:id>/', views.projectView),
+    path('projects/<int:id>/create-stage', views.createStage),
+    path('projects/<int:id>/<int:id1>/create-task', views.createTask),
+    path('projects/<int:id>/<int:id1>/<int:id2>', views.completeTask),
     path('team-projects/', views.team_projects, name="team_projects"),
-    path('new_project/', views.new_project, name="new_project"),
+    path('new-project/', views.new_project, name="new_project"),
 
     path('teams/', views.teams, name="teams"),
     path('my_team/', views.my_team, name="my_team"),

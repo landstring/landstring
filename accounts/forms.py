@@ -18,5 +18,13 @@ class CreateIdeaForm(forms.Form):
 	name = forms.CharField(max_length=100)
 	description = forms.CharField(widget=forms.Textarea(attrs={'rows' : '20', 'cols' : '120'} ))
 
+class CreateStageForm(forms.Form):
+	name = forms.CharField(max_length=80)
+	description = forms.CharField(widget=forms.Textarea(attrs={'rows' : '20', 'cols' : '120'} ))
 
+class CreateTaskForm(forms.Form):
+	name = forms.CharField(max_length=80)
 
+class CreateProjectForm(forms.Form):
+	name = forms.CharField(max_length=100)
+	description = forms.CharField(widget=forms.Textarea(attrs={'rows' : '20', 'cols' : '120'} ))

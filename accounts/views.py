@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Comments, Ideas
 from .models import PersonalProject, Stage_of_PersonalProject, Task_of_PersonalProject
 
-from .forms import CreateUserForm, CommentForm, CreateIdeaForm
+from .forms import CreateProjectForm, CreateStageForm, CreateTaskForm, CreateUserForm, CommentForm, CreateIdeaForm
 
 # АВТОРИЗАЦИЯ и РЕГИСТРАЦИЯ 
 def registerPage(request):
@@ -115,14 +115,87 @@ def projectView(request, id):
         return render(request, 'accounts/projects/personal_project_view_error.html')
 
 @login_required(login_url='login')
-def team_projects(request):
-    context = {}
-    return render(request, 'accounts/projects/team_projects.html', context)
+def createStage(request, id):
+    project = PersonalProject.objects.filter(author = request.user.id).filter(id = id)
+    if project:
+        if request.method == 'POST':
+            form = CreateStageForm(request.POST)
+            name = form.data.get('name')
+            description = form.data.get('description')
+            stage = Stage_of_PersonalProject(name=name, description = description, project = PersonalProject.objects.filter(author = request.user.id).get(id = id), completed = False)
+            stage.save()
+            return redirect('./')
+        else:
+            form = CreateStageForm(None)
+            context = {'form' : form}
+            return render(request, 'accounts/projects/create_stage.html', context)
+
+@login_required(login_url='login')
+def createTask(request, id, id1):
+    project = PersonalProject.objects.filter(author = request.user.id).filter(id = id)
+    if project:
+        if request.method == 'POST':
+            form = CreateTaskForm(request.POST)
+            name = form.data.get('name')
+            task = Task_of_PersonalProject(name=name, stage = Stage_of_PersonalProject.objects.get(id = id1), completed = False)
+            task.save()
+            return redirect('../')
+        else:
+            form = CreateTaskForm(None)
+            context = {'form' : form}
+            return render(request, 'accounts/projects/create_task.html', context)
+
+@login_required(login_url='login')
+def completeTask(request, id, id1, id2):
+    project = PersonalProject.objects.filter(author = request.user.id).filter(id = id)
+    if project:
+        task = Task_of_PersonalProject.objects.get(id = id2)
+        if task.completed:
+            task.completed = False
+        else:
+            task.completed = True 
+        task.save()
+        stage = Stage_of_PersonalProject.objects.get(id = id1)
+        tasks = Task_of_PersonalProject.objects.filter(stage = stage)
+        flag = True
+        for i in tasks:
+            if not i.completed:
+                flag = False
+                break
+            
+        stage.completed = flag
+        stage.save()
+    
+        project = PersonalProject.objects.get(id = id)
+        stages = Stage_of_PersonalProject.objects.filter(project = project)
+        flag = True 
+        for i in stages:
+            if not i.completed:
+                flag = False
+                break
+        project.completed = flag
+        project.save()
+        return redirect('../')
 
 @login_required(login_url='login')
 def new_project(request):
+    if request.method == 'POST':
+        form = CreateProjectForm(request.POST)
+        name = form.data.get('name')
+        description = form.data.get('description')
+        project = PersonalProject(name=name, description = description, author=request.user, completed = False)
+        project.save()
+        return redirect('projects')
+    else:
+        form = CreateIdeaForm(None)
+        context = {'form' : form}
+        return render(request, 'accounts/projects/new_project.html', context)
+
+#КОМАНДЫ
+@login_required(login_url='login')
+def team_projects(request):
     context = {}
-    return render(request, 'accounts/projects/new_project.html', context)
+    return render(request, 'accounts/projects/team_projects.html', context)
 
 @login_required(login_url='login')
 def teams(request):

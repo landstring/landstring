@@ -1,7 +1,23 @@
 {% extends "accounts/main/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'accounts/css/new_project.css' %}">
+{% endblock styles %}
+
 
 {% block content %}
 <div class="main">
-    <h1>Создать проект</h1>
+    <div class="container">
+        <div class="project">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="name_project"><h3>Название проекта: </h3> {{ form.name }}</div>
+                <div class="description_project"><h3>Описание проекта: </h3> {{ form.description }}</div>
+                <button type="submit" class="btn">Создать</button>
+            </form>
+
+        </div>
+    </div>
 </div>
 {% endblock content %}

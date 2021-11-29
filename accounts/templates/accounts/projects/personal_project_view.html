@@ -32,16 +32,16 @@
                 {% for task in task_list %}
                 {% if task.stage.name == stage.name %}
                     {% if task.completed %}
-                        <li class="task"><a class="task completed" href="#">{{ task.name }}</a></li>
+                        <li class="task"><a class="task completed" href="{{ stage.id }}/{{ task.id }}">{{ task.name }}</a></li>
                     {% else %}
-                        <li class="task"><a class="task" href="#">{{ task.name }}</a></li>
+                        <li class="task"><a class="task" href="{{ stage.id }}/{{ task.id }}">{{ task.name }}</a></li>
                     {% endif %}  
                 {% endif %}
                 {% endfor %}
             {% endfor %} 
             </ol>
             <div class="new_task">
-                <a href="create-task" class="grey-button">Создать задание</a>
+                <a href="{{ stage.id }}/create-task" class="grey-button">Создать задание</a>
             </div>
         </div> 
     </div>
