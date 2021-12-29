@@ -25,13 +25,9 @@ urlpatterns = [
     path('team-projects/', views.team_projects, name="team_projects"),
     path('new-project/', views.new_project, name="new_project"),
 
-    path('teams/', views.teams, name="teams"),
     path('my_team/', views.my_team, name="my_team"),
     path('new_team/', views.new_team, name="new_team"),
-
-    path('articles/', views.articles, name="articles"),
-    path('my_articles/', views.my_articles, name="my_articles"),
-    path('new_articles/', views.new_articles, name="new_articles"),
+    path('my_team/create-application', views.create_application),
 
     path('learning/', views.learning, name="learning"),
 
