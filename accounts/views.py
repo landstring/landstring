@@ -196,35 +196,13 @@ def team_projects(request):
 
 @login_required(login_url='login')
 def my_team(request):
-	if User_Team.objects.filter(user = request.user.id):
-		return render(request, 'accounts/teams/my_teams.html')
-	else:
-		invitations = Invitation.objects.filter(user = request.user.id)
-		applications = Application.objects.filter(user = request.user.id)
-		context = {'invitations': invitations, 'applications' : applications}
-		return render(request, 'accounts/teams/threads.html', context)
+	context = {}
+	return render(request, 'accounts/teams/threads.html', context)
 
 @login_required(login_url='login')
-def create_application(request):
-	if request.method == 'POST':
-		form = CreateApplication(request.POST)
-		team = form.data.get('team')
-		if Teams.objects.filter(name = team):
-			team = Teams.objects.get(name = team)
-			role = form.data.get('role')
-			print(team, role, request.user.id)
-			application = Application(user = request.user, team = team, role = role)
-			application.save()
-			return redirect("my_team")
-		else:
-			form = CreateApplication(None)
-			errors = ["Такой команды не существует"]
-			context = {'form' : form, 'errors' : errors}
-			return render(request, 'accounts/teams/create_application.html', context)
-	else:
-		form = CreateApplication(None)
-		context = {'form' : form, 'errors' : None}
-		return render(request, 'accounts/teams/create_application.html', context)
+def create_application(request):	
+	context = {}
+	return render(request, 'accounts/teams/create_application.html', context)
 
 @login_required(login_url='login')
 def new_team(request):

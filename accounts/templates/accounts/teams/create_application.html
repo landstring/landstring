@@ -1,27 +1,7 @@
 {% extends "accounts/main/base.html" %}
-{% load static %}
-
-{% block styles %}
-<link rel="stylesheet" href="{% static 'accounts/css/create_application.css' %}">
-{% endblock styles %}
-
 
 {% block content %}
 <div class="main">
-    <div class="container">
-        <div class="application">
-            <form action="" method="post">
-                {% csrf_token %}
-                <div class="name_team"><h3>Команда: </h3> {{ form.team }}</div>
-                {{ form.role }}
-                <button type="submit" class="btn">Отправить</button>
-            </form>
-        </div>
-        {% if errors %}
-            {% for error in errors %}
-                <p class="error">{{ error }}</p>            
-            {% endfor %} 
-        {% endif %}
-    </div>
+    <h3>Данный раздел в доработке...</h3>
 </div>
 {% endblock content %}
