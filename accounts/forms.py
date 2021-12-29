@@ -28,3 +28,15 @@ class CreateTaskForm(forms.Form):
 class CreateProjectForm(forms.Form):
 	name = forms.CharField(max_length=100)
 	description = forms.CharField(widget=forms.Textarea(attrs={'rows' : '20', 'cols' : '120'} ))
+
+class CreateApplication(forms.Form):
+	options = (
+		(1, "Ведущий программист"),
+		(2, "Креативный директор"),
+		(3, "Главный менеджер"),
+		(4, "Программист"),
+		(5, "Менеджер"),
+	)
+	team = forms.CharField(max_length=100)
+	role = forms.TypedChoiceField(widget=forms.RadioSelect,
+										 choices=options)

@@ -1,0 +1,43 @@
+{% extends "accounts/main/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'accounts/css/threads.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<div class="main">
+
+    
+
+
+    <div class="threads">
+
+        <h3>Приглашения</h3>
+        {% if invitations %}
+            {% for invitation in invitations %}
+            <div class="invitation">
+                    <h3 class="invitation_team">{{ invitation.team.name }}</h3>
+            </div>
+            {% endfor %}
+        {% else %}
+                <p class="length_0">Приглашений нет.</p>
+        {% endif %}
+        <div class="margin-100"></div>
+
+        <h3>Текущие заявки</h3>
+        {% if applications %}
+            {% for application in applications %}
+            <div class="invitation">
+                    <h3 class="invitation_team">{{ application.team.name }}</h3>
+            </div>
+            {% endfor %}
+        {% else %}
+                <p class="length_0">Заявок нет.</p>
+        {% endif %}
+        <a href="create-application" class="create_application">Создать заявку</a>  
+
+    </div>
+</div>
+{% endblock content %}
