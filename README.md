@@ -1,22 +1,24 @@
-Hi 👋 My name is Yaroslav Buykevich
+Привет 👋 меня зовут Ярослав Буйкевич
 ======================================================================================================================================
 
-I'm Java Developer
+![[db1fc4510b8a22cb470a3fc6a3f69376.gif]]
+
+Я разработчик на Java
 ------------------
 
-Я занимаюсь back-end разработкой уже 5 лет. Изучать начал в 9 классе. 
+Я занимаюсь back-end разработкой. Пять лет назад я начал изучать разработку на Python, создавал telegram-ботов на заказ. Затем перешёл в back-end разработку на Python Django и занимался этим примерно 1.5 года. И только 2 года назад я окончательно определился с желаемым стеком технологий. Я начал изучать Java, познакомился с Spring Framework. Моё обучение продолжается до сих пор, и я надеюсь, что когда-то стану настоящим мастером своего дела. 
 
-* 🌍  Я живу в Саратове
+
+* 🌍  Я живу в Саратове, России.
 * ✉️  Вы можете написать мне на почту [landstring@gmail.com](mailto:landstring@gmail.com)
-* 🚀  I'm currently working on ...
 * 🧠  В данный момент я изучаю следующий стек технологий: Java, Spring Framework, Spring Boot, Docker, K8s, etc...
-
-<a href="https://www.github.com/d3k0d4nce" target="_blank" rel="noreferrer"><img
-src="https://img.shields.io/github/followers/d3k0d4nce?logo=github&style=for-the-badge&color=a855f7&labelColor=181824" /></a>
+* 📊 Являюсь экспертом на [Codeforces]( https://codeforces.com/profile/Modern). Выступал на полуфинале ICPC.
 
 ### Skills
 
-
-<p align="left">
-<a href="https://www.oracle.com/java/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg" width="36" height="36" alt="Java" /></a><a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"></a><a href="https://www.postgresql.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg" width="36" height="36" alt="PostgreSQL" /></a><a href="https://www.docker.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/docker-colored.svg" width="36" height="36" alt="Docker" /></a><a href="https://cloud.google.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/googlecloud-colored.svg" width="36" height="36" alt="Google Cloud" /></a>
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=java,py,spring,postgres,mysql,hibernate,kafka,rabbitmq,docker,kubernetes,bash,git,postman" />
+  </a>
 </p>
+
